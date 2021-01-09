@@ -27,7 +27,7 @@ app.post('/posts', async (req, res) => {
   };
 
   await axios.post('http://localhost:4005/events', event);
-  return res.status(201).json(posts);
+  return res.status(201).json(post);
 });
 
 app.post('/events', (req, res) => {
