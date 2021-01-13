@@ -26,14 +26,14 @@ app.post('/posts', async (req, res) => {
     data: post,
   };
 
-  await axios.post('http://localhost:4005/events', event);
+  await axios.post('http://event-bus-srv:4005/events', event);
   return res.status(201).json(post);
 });
 
 app.post('/events', (req, res) => {
-  console.log('Received Events', req.body.type);
+  console.log('Received Event', req.body.type);
 
-  return res.send({ status: 'OK' });
+  return res.status(200).send({ status: 'OK' });
 });
 
 app.listen(4000, () => {

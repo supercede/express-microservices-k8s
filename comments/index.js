@@ -30,7 +30,7 @@ app.post('/posts/:id/comments', async (req, res) => {
     },
   };
 
-  await axios.post('http://localhost:4005/events', event);
+  await axios.post('http://event-bus-srv:4005/events', event);
   return res.status(201).json({
     comments: postComments,
   });
@@ -54,7 +54,7 @@ app.post('/events', async (req, res) => {
 
     editedComment.status = status;
 
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://event-bus-srv:4005/events', {
       type: 'CommentUpdated',
       data: {
         ...editedComment,
